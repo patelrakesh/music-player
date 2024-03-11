@@ -1,5 +1,5 @@
 # This is a simple music app where you can play music which are available in the library. 
-# This is made using React Js, `react-jinke-music-player` for player and 'i18n' for translating language.
+# This is made using `React Js` & libraries `react-jinke-music-player` for player and `i18n` for translating language.
 
 # Getting Started with Create React App
 
