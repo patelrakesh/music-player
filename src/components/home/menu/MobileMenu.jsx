@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { FcHome, FcAbout, FcDisplay, } from "react-icons/fc";
-import { GiHeartBeats } from "react-icons/gi"
+import { useState } from "react";
+import { FcHome, FcAbout, FcDisplay } from "react-icons/fc";
+import { GiHeartBeats } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import ApiContext from "../../context/ApiContext";

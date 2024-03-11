@@ -55,14 +55,14 @@ const Player = () => {
           clearInterval(interval);
 
           if (audioTag.current.currentTime === audioTag.current.duration) {
-            if (repeat == true) {
+            if (repeat === true) {
               repeatOnce();
-              setRepeat(repeat == true ? true : false);
-              setRandom(random == false ? false : true);
-            } else if (random == true) {
+              setRepeat(repeat === true ? true : false);
+              setRandom(random === false ? false : true);
+            } else if (random === true) {
               randomMusic();
-              setRandom(random == true ? true : false);
-              setRepeat(repeat == false ? false : true);
+              setRandom(random === true ? true : false);
+              setRepeat(repeat === false ? false : true);
             }
 
             progressBar.current.value = "0";
@@ -82,7 +82,7 @@ const Player = () => {
       const newId = idNum - 1;
       context.setId(newId.toString());
 
-      context.songs[(idNum - 2).toString()].LikeMusic == "true"
+      context.songs[(idNum - 2).toString()].LikeMusic === "true"
         ? context.setLikedMusic(true)
         : context.setLikedMusic(false);
     }
@@ -98,7 +98,7 @@ const Player = () => {
       const newId = idNum + 1;
       context.setId(newId.toString());
 
-      context.songs[context.id].LikeMusic == "true"
+      context.songs[context.id].LikeMusic === "true"
         ? context.setLikedMusic(true)
         : context.setLikedMusic(false);
     }
@@ -107,8 +107,8 @@ const Player = () => {
   function randomMusic() {
     context.setLikedMusic(false);
 
-    setRandom(random == false ? true : false);
-    setRepeat(repeat == true ? false : true);
+    setRandom(random === false ? true : false);
+    setRepeat(repeat === true ? false : true);
     const idNum = parseInt(context.id);
     const randomNum = Math.floor(Math.random() * 12);
     if (randomNum === 0 || randomNum === idNum) {
@@ -117,14 +117,14 @@ const Player = () => {
     } else {
       context.setId(randomNum.toString());
     }
-    context.songs[(randomNum - 1).toString()].LikeMusic == "true"
+    context.songs[(randomNum - 1).toString()].LikeMusic === "true"
       ? context.setLikedMusic(true)
       : context.setLikedMusic(false);
   }
 
   function repeatOnce() {
-    setRepeat(repeat == true ? false : true);
-    setRandom(random == false ? true : false);
+    setRepeat(repeat === true ? false : true);
+    setRandom(random === false ? true : false);
     audioTag.current.loop = true;
   }
 
@@ -165,13 +165,13 @@ const Player = () => {
   function LikedMusic(musicId) {
     context.songs[musicId - 1].LikeMusic = "true";
     context.setSongs([...context.songs]);
-    context.setLikedMusic(context.likedMusic == false ? true : false);
+    context.setLikedMusic(context.likedMusic === false ? true : false);
   }
 
   function disLikeMusic(musicId) {
     context.songs[musicId - 1].LikeMusic = "false";
     context.setSongs([...context.songs]);
-    context.setLikedMusic(context.likedMusic == false ? true : false);
+    context.setLikedMusic(context.likedMusic === false ? true : false);
   }
   return (
     <>
@@ -183,10 +183,10 @@ const Player = () => {
             </button>
             <button
               onClick={() =>
-                context.setPlaying(context.playing == true ? false : true)
+                context.setPlaying(context.playing === true ? false : true)
               }
             >
-              {context.playing == false ? <FaPlay /> : <FaPause />}
+              {context.playing === false ? <FaPlay /> : <FaPause />}
             </button>
             <button onClick={skip}>
               <BsFillSkipEndFill />
@@ -220,7 +220,7 @@ const Player = () => {
             &nbsp;
             <span className="Pduration">{calculateDuration(duration)}</span>
             <div className="volumeMusic">
-              <button onClick={() => setMute(mute == false ? true : false)}>
+              <button onClick={() => setMute(mute === false ? true : false)}>
                 {mute ? <FaVolumeMute /> : <FaVolumeUp />}
               </button>
               <div className="rangeBox">
@@ -248,7 +248,7 @@ const Player = () => {
                   {FullImg ? <FaWindowClose /> : ""}
                 </button>
                 <div className={MusicPictureClass()}>
-                  <img src={s.cover} onClick={() => setFullImg(true)} />
+                  <img src={s.cover} onClick={() => setFullImg(true)} alt=""/>
 
                   <div
                     className={
@@ -257,7 +257,7 @@ const Player = () => {
                         : "showFullDetail_disable"
                     }
                   >
-                    <img src={s.cover} onClick={() => setFullImg(true)} />
+                    <img src={s.cover} onClick={() => setFullImg(true)} alt="" />
                     <span>{s.singer}</span>
                     <span>{s.song_name}</span>
                   </div>
@@ -270,12 +270,12 @@ const Player = () => {
                 <span
                   className="heart"
                   onClick={() =>
-                    context.likedMusic == false
+                    context.likedMusic === false
                       ? LikedMusic(s.musicId)
                       : disLikeMusic(s.musicId)
                   }
                 >
-                  {context.likedMusic == true ? <BsHeartFill /> : <BsHeart />}
+                  {context.likedMusic === true ? <BsHeartFill /> : <BsHeart />}
                 </span>
               </>
             </div>
